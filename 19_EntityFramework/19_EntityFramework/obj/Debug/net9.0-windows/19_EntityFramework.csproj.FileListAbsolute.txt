@@ -122,7 +122,6 @@ P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\bin\Debug\net9.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\bin\Debug\net9.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.csproj.AssemblyReference.cache
-P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\_19_EntityFramework.Form1.resources
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.csproj.GenerateResource.cache
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.GeneratedMSBuildEditorConfig.editorconfig
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.AssemblyInfoInputs.cache
@@ -135,3 +134,4 @@ P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.pdb
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.genruntimeconfig.cache
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\ref\19_EntityFramework.dll
+P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\_19_EntityFramework.Principal.resources

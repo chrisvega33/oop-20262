@@ -18,6 +18,8 @@ public partial class GerardoContext : DbContext
 
     public virtual DbSet<Producto> Productos { get; set; }
 
+    public virtual DbSet<Telefono> Telefonos { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=192.168.1.116;Database=Gerardo;user=sa;password=1234;TrustServerCertificate=True");
@@ -40,6 +42,20 @@ public partial class GerardoContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Observaciones).HasColumnType("text");
             entity.Property(e => e.PrecioVenta).HasColumnType("decimal(12, 2)");
+        });
+
+        modelBuilder.Entity<Telefono>(entity =>
+        {
+            entity.HasKey(e => e.TelefonoId).HasName("PK__Telefono__A9C6EF366DDBFABC");
+
+            entity.Property(e => e.TelefonoId).HasColumnName("TelefonoID");
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Telefono1)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("Telefono");
         });
 
         OnModelCreatingPartial(modelBuilder);
