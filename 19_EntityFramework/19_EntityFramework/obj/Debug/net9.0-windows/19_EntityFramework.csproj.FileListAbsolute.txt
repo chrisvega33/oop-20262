@@ -135,3 +135,4 @@ P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\19_EntityFramework.genruntimeconfig.cache
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\ref\19_EntityFramework.dll
 P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\_19_EntityFramework.Principal.resources
+P:\Programas UNAH\2026-2\Programacion Orientada a Objetos\19_EntityFramework\19_EntityFramework\obj\Debug\net9.0-windows\_19_EntityFramework.Detalle.resources
