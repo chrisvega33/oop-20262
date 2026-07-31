@@ -108,6 +108,12 @@ namespace _19_EntityFramework
             //Mandar a llamar al Form llamado Detalle
             Detalle d = new Detalle();
             d.ShowDialog(); //mostrar el Form de forma Modal (superpuesto sobre el propietario)
+
+            //Verificar que se hizo click en el boton Aceptar en el Form de Detalle
+            if( d.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Hizo click en Aceptar");
+            }
         }
     }
 }
