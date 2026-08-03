@@ -1,3 +1,5 @@
+using _19_EntityFramework.Models; //Importante importar el Folder de Models
+
 namespace _19_EntityFramework
 {
     public partial class Principal : Form
@@ -110,9 +112,119 @@ namespace _19_EntityFramework
             d.ShowDialog(); //mostrar el Form de forma Modal (superpuesto sobre el propietario)
 
             //Verificar que se hizo click en el boton Aceptar en el Form de Detalle
-            if( d.DialogResult == DialogResult.OK)
+            if (d.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("Hizo click en Aceptar");
+                //MessageBox.Show("Hizo click en Aceptar");
+                try
+                {
+                    //nuevo objeto de tipo Producto
+                    Producto registro = new Producto();
+                    //Importante: no olvide colocar las cajas de texto
+                    //en el Form de Detalle con la propiedad Modifiers como public
+                    registro.Codigo = d.Codigo.Text.Trim();
+                    registro.Nombre = d.Nombre.Text.Trim();
+                    registro.Costo = decimal.Parse(d.Costo.Text);
+                    registro.PrecioVenta = decimal.Parse(d.PrecioVenta.Text);
+                    registro.Existencias = int.Parse(d.Existencias.Text);
+                    registro.Observaciones = d.Observaciones.Text.Trim();
+
+                    //crear un objeto que apunte al contexto de la base de datos
+                    Data.GerardoContext contexto = new Data.GerardoContext();
+
+                    //agregar el nuevo producto a la tabla
+                    contexto.Productos.Add(registro);
+                    //escribir el cambio en la base de datos
+                    contexto.SaveChanges();
+                    //refrescar los datos en el Grid
+                    this.CargarDatos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void botonEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //si no hay registros no continua
+                if (Grid1.Rows.Count == 0) return;
+                //si no ha seleccionado una fila, tampoco continua
+                if (Grid1.CurrentRow == null) return;
+
+                //instanciar un nuevo Form de Detalle
+                Detalle d = new Detalle();
+
+                //llenar las cajas de texto de Detalle con el contenido del registro a editar
+                //recuperar el registro desde la base de datos
+                Data.GerardoContext contexto = new Data.GerardoContext();
+                //localizar el producto por medio de su campo Primary Key
+                Producto registro = contexto.Productos.Find(Grid1.CurrentRow.Cells["ProductoID"].Value);
+
+                //llenado de las cajas de texto
+                d.Codigo.Text = registro.Codigo;
+                d.Nombre.Text = registro.Nombre;
+                d.Costo.Text = registro.Costo.ToString();
+                d.PrecioVenta.Text = registro.PrecioVenta.ToString();
+                d.Existencias.Text = registro.Existencias.ToString();
+                d.Observaciones.Text = registro.Observaciones;
+
+                //Mostrar el formulario de Detalle
+                d.ShowDialog();
+
+                //se ha cerrado el Form de Detalle, verificar si hizo click en Aceptar
+                if (d.DialogResult == DialogResult.OK)
+                {
+                    //colocar los nuevos datos desde Detalle hacia el registro recuperado de la BD
+                    registro.Codigo = d.Codigo.Text.Trim();
+                    registro.Nombre = d.Nombre.Text.Trim();
+                    registro.Costo = decimal.Parse(d.Costo.Text);
+                    registro.PrecioVenta = decimal.Parse(d.PrecioVenta.Text);
+                    registro.Existencias = int.Parse(d.Existencias.Text);
+                    registro.Observaciones = d.Observaciones.Text.Trim();
+
+                    //escribir el registro en la base de datos
+                    contexto.SaveChanges();
+                    //refrescar el grid
+                    this.CargarDatos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void botonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //si no hay registros no continua
+                if (Grid1.Rows.Count == 0) return;
+                //si no ha seleccionado una fila, tampoco continua
+                if (Grid1.CurrentRow == null) return;
+
+                //preguntar al usuario si desea eliminar, si responde No o Cancela no sigue
+                DialogResult respuesta = MessageBox.Show("Desea eliminar el registro?", "Eliminar", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.No || respuesta == null) return;
+
+                //hacer un objeto para el contexto de la base de datos
+                Data.GerardoContext contexto = new Data.GerardoContext();
+                //localizar el producto por medio de su campo Primary Key
+                Producto registro = contexto.Productos.Find(Grid1.CurrentRow.Cells["ProductoID"].Value);
+
+                //eliminar el registro de la base de datos
+                contexto.Productos.Remove(registro);
+                //escribir los datos en la BD
+                contexto.SaveChanges();
+                //refrescar el grid
+                this.CargarDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

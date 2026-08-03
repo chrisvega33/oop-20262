@@ -67,6 +67,7 @@
             botonEditar.TabIndex = 2;
             botonEditar.Text = "Editar";
             botonEditar.UseVisualStyleBackColor = true;
+            botonEditar.Click += botonEditar_Click;
             // 
             // botonEliminar
             // 
@@ -78,6 +79,7 @@
             botonEliminar.TabIndex = 3;
             botonEliminar.Text = "Eliminar";
             botonEliminar.UseVisualStyleBackColor = true;
+            botonEliminar.Click += botonEliminar_Click;
             // 
             // Principal
             // 
