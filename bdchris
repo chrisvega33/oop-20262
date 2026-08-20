@@ -1,0 +1,122 @@
+          int n;
+          Console.WriteLine("Bienvenido al registro de la unah que sea hacer? ");
+          Console.WriteLine("1. iniciar seccion");
+          Console.WriteLine("2. crear un nuevo usuario");
+          n=int.Parse(Console.ReadLine());
+          try
+          {
+              Console.Clear();
+switch(n)
+          {
+                 
+              case 1:
+                  Console.WriteLine();
+                  break;
+
+              case 2:
+                     VegaContext contex=new VegaContext();
+                      
+                      string nom,dni,ciu,col,lnac,cnac;
+                  Console.WriteLine("Bienvenido a la creacion de usuario");
+                      Console.WriteLine("***************");
+
+                      Console.WriteLine("Cual es su nombre?");
+                      nom= Console.ReadLine();
+
+                      Console.WriteLine("Cual es su dni?");
+                      dni = Console.ReadLine();
+
+                      Console.WriteLine("cual es su colonia?");
+                      col = Console.ReadLine();
+
+                      Console.WriteLine("cual es su ciudad?");
+                      ciu = Console.ReadLine();
+                      
+                      Console.WriteLine("cual es su lugar de nacimiento?");
+                      lnac = Console.ReadLine();
+
+                      Console.WriteLine("cual es su ciudad de nacimiento?");
+                      cnac = Console.ReadLine();
+
+                      Barrio barrio1=new Barrio(col,ciu);
+                      Nacimiento naci1=new Nacimiento(cnac,cnac);
+                      Persona per1=new Persona(nom,dni,barrio1,naci1);
+
+                      Usuarios1 usuarioo{
+                         
+                      }
+                      contex.Usuarios1s.Add(usuarioo);
+
+                   
+
+                      break;
+
+              default:
+                  break;
+          }    
+
+          }
+          catch (Exception)
+          {
+              Console.WriteLine("tiene que ingresar un numero entre 1 y 2");
+           
+          }
+
+
+using Prueba_base_de_datos.Data;
+using Prueba_base_de_datos.Models;
+
+namespace Prueba_base_de_datos
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Barrio direccion = new Barrio("palmas", "San Pedro Sula");
+            Nacimiento nacimiento = new Nacimiento("San Pedro Sula", "desconocido");
+            Persona persona = new Persona("javier", "5651452345", direccion, nacimiento);
+
+            Usuarios1 nuevou = new Usuarios1
+            {
+                NumeroDeCuenta = 20262030254,
+                Contraseña = "12345678",
+
+                Nombre = persona.Nombre,
+                Dni = persona.DNI,
+                ColoniaActual = persona.Colonia.Colonia,
+                CiudadActual = persona.Colonia.CiudadActual,
+                CiudadNacimiento = persona.Nacimiento.CiudadNacimiento,
+                LugarNacimiento = persona.Nacimiento.lugarNacimiento
+            };
+
+            VegaContext context = new VegaContext();
+            
+                context.Usuarios1s.Add(nuevou);
+                context.SaveChanges();
+                Console.WriteLine("el estudiante se registro");
+            
+           
+
+            Console.WriteLine("usuario: ");
+             string cuentaenontrada = Console.ReadLine();
+            Console.WriteLine("contraseña:");
+            string pass= Console.ReadLine();
+
+              VegaContext context1 = new VegaContext();
+            Usuarios1 usuario = context1.Usuarios1s.FirstOrDefault(u => u.NumeroDeCuenta.ToString() == cuentaenontrada && u.Contraseña == pass);
+            if (usuario != null)
+            {
+                Barrio direccion1 = new Barrio(usuario.ColoniaActual, usuario.CiudadActual);
+                Nacimiento nacimiento1 = new Nacimiento(usuario.CiudadNacimiento, usuario.LugarNacimiento);
+                Persona persona1 = new Persona(usuario.Nombre, usuario.Dni, direccion1, nacimiento1);
+
+                Console.WriteLine("Datos de persona");
+                Console.WriteLine($"Nombre: {persona1.Nombre}");
+                Console.WriteLine($"Numero de cuenta {nuevou.NumeroDeCuenta}");
+            }
+            else Console.WriteLine("Usuario no encontrado");
+
+        }
+    }
+}
+          
